@@ -18,6 +18,12 @@ return new class extends Migration
         $role2 = Role::create(['name' => 'usuario']);
         $user = User::find(1);
         $user->assignRole($role1);
+
+        $restousuarios = User::where('id', '!=' , 1)->get();
+        foreach ($restousuarios as $usuario) {
+            $usuario->assignRole($role2);
+        }
+
     }
 
     /**

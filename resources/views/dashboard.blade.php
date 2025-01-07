@@ -10,6 +10,13 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
+                    @role('Admin')
+                    <p>Su rol es Admin (Sigma Σ)</p>
+                    @endrole
+
+                    @role('usuario')
+                    <p>Su rol es usuario (Cringe β)</p>
+                    @endrole
                 </div>
             </div>
         </div>
