@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('caratula')->nullable();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
