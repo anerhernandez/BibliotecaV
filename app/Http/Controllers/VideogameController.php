@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Videojuego;
+use App\Models\Videogame;
 use Illuminate\Http\Request;
 
-class VideojuegoController extends Controller
+class VideogameController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class VideojuegoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Videojuego $videojuego)
+    public function show(Videogame $videogame)
     {
         //
     }
@@ -42,7 +42,7 @@ class VideojuegoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Videojuego $videojuego)
+    public function edit(Videogame $videogame)
     {
         //
     }
@@ -50,7 +50,7 @@ class VideojuegoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Videojuego $videojuego)
+    public function update(Request $request, Videogame $videogame)
     {
         //
     }
@@ -58,7 +58,7 @@ class VideojuegoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Videojuego $videojuego)
+    public function destroy(Videogame $videogame)
     {
         //
     }
