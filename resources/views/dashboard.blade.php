@@ -19,9 +19,7 @@
                     @endrole
                     <br>
                     <h2>Muestra de todos los juegos</h2>
-                    @foreach ($videogames as $videogame)
-                        <p>{{$videogame}}</p>
-                    @endforeach
+                    @livewire('Videogames')
                 </div>
             </div>
         </div>
