@@ -11,12 +11,17 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
                     @role('Admin')
-                    <p>Su rol es Admin (Sigma Σ)</p>
+                    <p>Su rol es Admin (Sigma Σ, se le permite eliminar juegos)</p>
                     @endrole
 
                     @role('usuario')
                     <p>Su rol es usuario (Cringe β)</p>
                     @endrole
+                    <br>
+                    <h2>Muestra de todos los juegos</h2>
+                    @foreach ($videogames as $videogame)
+                        <p>{{$videogame}}</p>
+                    @endforeach
                 </div>
             </div>
         </div>
