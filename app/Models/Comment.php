@@ -4,22 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Videogame extends Model
+class Comment extends Model
 {
     use SoftDeletes;
     
     protected $fillable = [
-        'titulo',
-        'descripcion',
-        'caratula',
-        'user_id'
-    ]; 
+        'comentario',
+        'valoracion',
+        'user_id',
+        'videogame_id'
+    ];
 
     /**
-     * Get the user that owns the Videogame
+     * Get the user that owns the Comment
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -27,13 +26,14 @@ class Videogame extends Model
     {
         return $this->belongsTo(User::class);
     }
+
     /**
-     * Get all of the comments for the Videogame
+     * Get the user that owns the Comment
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function comments(): HasMany
+    public function videogame(): BelongsTo
     {
-        return $this->hasMany(Comment::class);
+        return $this->belongsTo(Videogame::class);
     }
 }

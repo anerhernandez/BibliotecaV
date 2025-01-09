@@ -48,6 +48,7 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    
     /**
      * Get all of the comments for the User
      *
@@ -56,5 +57,14 @@ class User extends Authenticatable
     public function videogames(): HasMany
     {
         return $this->hasMany(Videogame::class);
+    }
+    /**
+     * Get all of the comments for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
     }
 }
