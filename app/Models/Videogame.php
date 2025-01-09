@@ -13,7 +13,8 @@ class Videogame extends Model
     protected $fillable = [
         'titulo',
         'descripcion',
-        'caratula'
+        'caratula',
+        'user_id'
     ]; 
 
     /**
