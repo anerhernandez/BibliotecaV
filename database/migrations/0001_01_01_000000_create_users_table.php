@@ -38,6 +38,7 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+        //Call seeder from migration (used when creating a project from git using php artisan migrate)
         Artisan::call('db:seed', [
             '--class' => 'UserSeeder',
         ]);
