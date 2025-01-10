@@ -18,8 +18,9 @@
                     <p>Su rol es usuario (Cringe β)</p>
                     @endrole
                     <br>
-                    <h2>Muestra de todos los juegos</h2>
+                    <h1 class="text-2xl text-green-400">Muestra de todos los juegos</h1>
                     @livewire('Videogames')
+                    @livewire("Comments")
                 </div>
             </div>
         </div>
