@@ -9,6 +9,11 @@ class Videogames extends Component
 {
     public $videogames;
     public $videogame;
+    public $addv = false;
+    public $titulo;
+    public $descripcion;
+    public $caratula;
+    public $detalles = false;
 
     public function render()
     {
@@ -17,4 +22,11 @@ class Videogames extends Component
     public function mount(){
         $this->videogames = Videogame::all();
     }
+    public function addV(){
+        $this->addv = true;
+    }
+    public function closeaddV(){
+        $this->addv = false;
+    }
+
 }
