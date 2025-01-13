@@ -8,6 +8,7 @@
             <th class="py-4">Título</th>
             <th>Descripción</th>
             <th>Carátula</th>
+            <th>Valoración</th>
             <th 
             @role('Admin')
             colspan="2"
@@ -19,6 +20,7 @@
                     <td class="w-1/3 text-left py-3 px-4">{{$videogame->titulo}}</td>
                     <td class="w-1/3 text-left py-3 px-4">{{$videogame->descripcion}}</td>
                     <td>{{$videogame->caratula}}</td>
+                    <td>Aquí van las valoraciones</td>
                     <td class="text-center"><button  class="bg-slate-400 rounded text-slate-100 p-2 hover:bg-slate-500 duration-200">Detalles {{$addv}}</button></td>
                     @role('Admin')
                     <td><button  class="bg-red-600 rounded text-white p-2 hover:bg-red-700 duration-200">Eliminar</button></td>

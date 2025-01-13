@@ -20,7 +20,7 @@ class Videogames extends Component
         return view('livewire.videogames');
     }
     public function mount(){
-        $this->videogames = Videogame::all();
+        $this->videogames = Videogame::select('titulo', 'descripcion', 'caratula')->join('comments', 'comments.videogame_id', '=', 'videogames.id')->get();
     }
     public function openaddV(){
         $this->addv = true;
