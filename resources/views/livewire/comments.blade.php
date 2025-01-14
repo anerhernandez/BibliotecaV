@@ -35,9 +35,23 @@
                     </tbody>
                 </table>
                 <br>
-                <h1 class="text-2xl text-white">Comentarios: </h1>
+                <h1 class="text-2xl text-slate-400">Comentarios: </h1>
+                <hr class="border border-gray-700">
                 {{-- Comentarios --}}
-                {{$comments}}
+                    @foreach ($comments as $comment)
+                      @if ($videogamec[0]->id == $comments[0]->videogame_id)
+                        
+                        @foreach ($users as $user)
+                          @if ($user->id == $comment->user_id)
+                            <p class="text-2xl text-orange-400">Comentario de {{$user->name}}</p>
+                          @endif
+                          
+                        @endforeach
+                        <p class="ml-5">{{$comment->comentario}}</p>
+                        <p class="ml-7">Valoración: {{$comment->valoracion}}⭐</p>
+                        
+                      @endif
+                    @endforeach
                 {{-- Modal para añadir comentario o editar comentario --}}
                 @if ($addvC)
                 <div class="fixed left-0 top-0 flex h-full w-full items-center justify-center bg-black bg-opacity-50 py-10 text-black">

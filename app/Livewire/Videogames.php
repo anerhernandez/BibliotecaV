@@ -18,7 +18,7 @@ class Videogames extends Component
     public $detalles = false;
     public function render()
     {
-        return view('livewire.videogames');
+        return view('livewire.videogames')->layout('layouts.app');;
     }
     public function mount(){
         $this->videogames = $this->getGames();

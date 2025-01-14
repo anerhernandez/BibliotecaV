@@ -15,13 +15,13 @@ class CommentSeeder extends Seeder
     {
         DB::table('comments')->insert([
             'comentario' => 'Verdadero peak del gaming, Kratos god',
-            'valoracion' => 10,
+            'valoracion' => 5,
             'user_id' => 1,
             'videogame_id' => 1
         ]);
         DB::table('comments')->insert([
-            'comentario' => 'God 10/10 Actual cinema',
-            'valoracion' => 9,
+            'comentario' => 'God 9/10 Actual cinema',
+            'valoracion' => 4,
             'user_id' => 2,
             'videogame_id' => 2
         ]);

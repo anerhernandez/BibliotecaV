@@ -20,6 +20,7 @@ class Comments extends Component
     public $comentario;
     public $videogame_with_comment = null;
     public $comments;
+    public $users;
     public function render()
     {
         return view('livewire.comments')->layout('layouts.app');
@@ -28,6 +29,7 @@ class Comments extends Component
         $current_id = $this->getGameC();
         $this->videogamec = DB::table('videogames')->where('id', '=', $current_id->id)->get();
         $this->comments = DB::table('comments')->where('videogame_id', '=', $current_id->id)->get();
+        $this->users = DB::table('users')->get();
     }
     public function getGameC(){
         if($data = Session::get('videogame_detail')) {
@@ -54,15 +56,15 @@ class Comments extends Component
         ->where('videogames.id', '=', $current_id->id)
         ->get();
 
-        if (!$this->videogame_with_comment->isEmpty()) {
-            $comment = Comment::find($this->videogame_with_comment->first()->id);
-            $comment->update(
-                [
-                    'comentario' => $this->comentario
-                ]
-            );
-        }
-        else{
+        // if (!$this->videogame_with_comment->isEmpty()) {
+        //     $comment = Comment::find($this->videogame_with_comment->first()->id);
+        //     $comment->update(
+        //         [
+        //             'comentario' => $this->comentario
+        //         ]
+        //     );
+        // }
+        // else{
             Comment::Create(
                 [
                     'comentario' => $this->comentario,
@@ -71,12 +73,13 @@ class Comments extends Component
                     'videogame_id' => $this->getGameC()->id
                 ]
             );
-        }
+        // }
         $this->closeaddC();
         $this->clearfields();
     }
     public function deleteVideogame(){
         $current_id = $this->getGameC();
-        Videogame::join('comments', 'videogames.id', '=', 'comments.videogame_id')->where('videogames.id', '=', $current_id->id)->delete();
+        DB::table('videogames')->where('id', $current_id->id)->delete();
+        redirect()->route('videogames');
     }
 }

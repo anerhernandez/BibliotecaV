@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('comentario')->nullable();
             $table->tinyInteger('valoracion');
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('videogame_id')->constrained();
+            $table->foreignId('videogame_id')->constrained()->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
