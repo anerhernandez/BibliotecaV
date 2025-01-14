@@ -1,17 +1,14 @@
 <div>
     <br>
     <div class="text-center py-4">
-      <button wire:click="openaddV" class="bg-sky-700 p-3 border border-sky-700 rounded">Añadir Videojuego</button>
+      <button wire:click.prevent="openaddV" class="bg-sky-700 p-3 border border-sky-700 rounded">Añadir Videojuego</button>
     </div>
-    <table class="min-w-full bg-white">
+    <table class="min-w-full bg-white border-slate-900 border-4 rounded">
         <thead class="bg-gray-700 text-white border border-gray-700">
             <th class="py-4">Título</th>
             <th>Descripción</th>
             <th>Carátula</th>
-            <th 
-            @role('Admin')
-            colspan="2"
-            @endrole>Detalles</th>
+            <th>Detalles</th>
         </thead>
         <tbody>
             @foreach ($videogames as $videogame)
@@ -19,10 +16,7 @@
                     <td class="w-1/3 text-left py-3 px-4">{{$videogame->titulo}}</td>
                     <td class="w-1/3 text-left py-3 px-4">{{$videogame->descripcion}}</td>
                     <td>{{$videogame->caratula}}</td>
-                    <td class="text-center"><button  class="bg-slate-400 rounded text-slate-100 p-2 hover:bg-slate-500 duration-200">Detalles {{$addv}}</button></td>
-                    @role('Admin')
-                    <td class="text-center"><button  class="bg-red-600 rounded text-white p-2 hover:bg-red-700 duration-200">Eliminar</button></td>
-                    @endrole
+                    <td class="text-center"><button wire:click="openDetails({{$videogame}})"class="bg-slate-400 rounded text-slate-100 p-2 hover:bg-slate-500 duration-200">Detalles {{$addv}}</button></td>
                 </tr>
             @endforeach
         </tbody>
@@ -34,7 +28,7 @@
           <div class="w-full">
             <div class="m-8 my-20 max-w-[400px] mx-auto">
               <div class="mb-8">
-                <h1 class="mb-4 text-3xl font-extrabold ">Añadir Videojuego</h1>
+                <h1 class="mb-4 text-3xl font-extrabold text-black">Añadir Videojuego</h1>
               </div>
               <div class="space-y-4">
                 <div>
@@ -55,8 +49,8 @@
                 </div>
 
 
-                <button wire:click="createVideogame" class="p-3 bg-black rounded-full hover:bg-neutral-950 duration-200 text-white w-full font-semibold">Añadir Videojuego</button>
-                <button wire:click="closeaddV" class="p-3 bg-white border border-gray-500 hover:bg-neutral-200 duration-200 rounded-full w-full font-semibold">Cancelar</button>
+                <button wire:click.prevent="createVideogame" class="p-3 bg-black rounded-full hover:bg-neutral-950 duration-200 text-white w-full font-semibold">Añadir Videojuego</button>
+                <button wire:click.prevent="closeaddV" class="p-3 bg-white border border-gray-500 hover:bg-neutral-200 duration-200 rounded-full w-full font-semibold">Cancelar</button>
               </div>
             </div>
           </div>

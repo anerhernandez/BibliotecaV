@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Videogame;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class Videogames extends Component
@@ -20,16 +21,20 @@ class Videogames extends Component
         return view('livewire.videogames');
     }
     public function mount(){
-        #$this->videogames = Videogame::select('titulo', 'descripcion', 'caratula')->join('comments', 'comments.videogame_id', '=', 'videogames.id')->get();
-        $this->videogames = Videogame::all();
+        $this->videogames = $this->getGames();
+    }
+    public function getGames(){
+        return Videogame::all();
     }
     public function openaddV(){
         $this->addv = true;
+        $this->clearfields();
+        $this->getGames();
     }
     public function closeaddV(){
         $this->addv = false;
     }
-    public function clearfield(){
+    public function clearfields(){
         $this->titulo = '';
         $this->descripcion = '';
         $this->caratula = '';
@@ -44,8 +49,20 @@ class Videogames extends Component
             ]
         );
         $this->closeaddV();
+        $this->clearfields();
+        $this->videogames = $this->getGames();
     }
-    // public function deleteVideogame(){
-    //     // code
-    // }
+    public function deleteVideogame(Videogame $videogame){
+        $videogame->delete();
+        $this->clearfields();
+        $this->closeaddV();
+        $this->videogames = $this->getGames();
+    }
+    public function openDetails(Videogame $videogame){
+        $this->videogame = $videogame;
+        $this->detalles = true;
+        Session::put('videogame_detail', $videogame);
+        Session::save();
+        return redirect()->route('comments', $videogame)->with('videogame', $videogame);
+    }
 }

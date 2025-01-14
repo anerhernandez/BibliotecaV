@@ -14,11 +14,12 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('comentario');
+            $table->string('comentario')->nullable();
             $table->tinyInteger('valoracion');
             $table->foreignId('user_id')->constrained();
             $table->foreignId('videogame_id')->constrained();
             $table->timestamps();
+            $table->softDeletes();
         });
         Artisan::call('db:seed', [
             '--class' => 'CommentSeeder',
